@@ -1,0 +1,37 @@
+#!/bin/bash
+
+## ########################################################################## ##
+##
+## init
+##
+## ########################################################################## ##
+
+## includes
+source ../00-scripts-build-kernel/config_init
+
+## -------------------------------------------------------------------------- ##
+## DEFINITIONS:
+## -------------------------------------------------------------------------- ##
+CALLEE="false"
+
+## -------------------------------------------------------------------------- ##
+REMOTE_URL="git://git.code.sf.net/p/aufs/aufs-util"
+BUILD_DIR="../build-tools-aufs"
+GIT_REPOSITORY_NAME="aufs-util.git"
+## note: MAIN_BRANCH="master"
+
+## -------------------------------------------------------------------------- ##
+## link to kernel storage path
+## note: will be generated later in process 
+STORAGE_DIR=""
+
+## -------------------------------------------------------------------------- ##
+## select default branch (aufs-util repository):
+## see 'git branch --all'
+## Note: - *-rcN branch is to be used with 'rc' kernel versions ONLY.
+##       - use the branch for the nearest lower number 
+BASE_KERNEL_VERSION="6.0"
+RELEASE_BRANCH="aufs${BASE_KERNEL_VERSION}"
+
+## ########################################################################## ##
+

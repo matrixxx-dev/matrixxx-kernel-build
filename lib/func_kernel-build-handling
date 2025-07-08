@@ -1,0 +1,107 @@
+#!/bin/bash
+
+## ########################################################################## ##
+## kernel build handling
+## - debian: multiarch architecture specifiers (tuples)
+## - based on normalized GNU triplets
+## ########################################################################## ##
+## if package dpkg-dev installed
+## - dpkg-architecture --list-known
+## - dpkg-architecture
+## - dpkg-architecture -qDEB_HOST_MULTIARCH
+##
+## Add another architecture (dpkg-architecture --list-known: i386, amd64, ...)
+## - $ sudo dpkg --add-architecture "<architecture>"
+## - $ sudo dpkg --remove-architecture "<architecture>"
+## - $ sudo apt-get update
+##
+## See currently available architectures
+## - $ cat /var/lib/dpkg/arch
+## - $ dpkg --print-architecture
+## - $ dpkg --print-foreign-architectures
+
+## -------------------------------------------------------------------------- ##
+## FUNCTIONS:
+## -------------------------------------------------------------------------- ##
+func_set_system_architecture(){
+  case $SYSTEM_ARCHITECTURE in
+    "$SYSTEM_i686")     ARCH="ARCH=\"i386\""
+                        ## multiarch name:
+                        COMPILER_ARCH="i686"
+                        ## machine type:
+                        M_TYPE=""
+                        OUTPUT_DIR="obj"
+                        ;;
+    "$SYSTEM_x86_64")   ARCH="ARCH=\"x86_64\""
+                        COMPILER_ARCH="x86_64"
+                        M_TYPE="-64"
+                        OUTPUT_DIR="obj${M_TYPE}"
+                        ;;
+    *)                  echo "no valid system architecture selected !!!"
+                        exit 1;;
+  esac
+
+  ## arch-vendor-kernel-system:
+  func_set_target_tuples "${COMPILER_ARCH}"
+}
+
+## GNU Target Triplet: arch-vendor-kernel-system
+## - arch   => architecture
+## - kernel (optional system) => os
+## note:
+func_set_target_tuples(){ # arch="$1"
+  local arch kernel
+  arch="$1"; kernel="-linux-gnu"
+
+  TARGET_TUPLES="${arch}${kernel}"
+  CROSS_COMPILE="CROSS_COMPILE=${TARGET_TUPLES}-"
+
+  COMPILER_TOOL_LIST=(
+  "${TARGET_TUPLES}-cpp"
+  "${TARGET_TUPLES}-g++"
+  "${TARGET_TUPLES}-gcc"
+  "${TARGET_TUPLES}-gcc-ar"
+  "${TARGET_TUPLES}-gcc-nm"
+  "${TARGET_TUPLES}-gcc-ranlib"
+  "${TARGET_TUPLES}-gcov"
+  "${TARGET_TUPLES}-gcov-dump"
+  "${TARGET_TUPLES}-gcov-tool"
+  )
+
+  TRANSCRIPTION_FILE="${OUTPUT_DIR}/transcription.txt"
+
+  #echo "ARCH: $ARCH"
+  #echo "COMPILER_ARCH: $COMPILER_ARCH"
+  #echo "M_TYPE: $M_TYPE"
+  #
+  #echo "TARGET_TUPLES: $TARGET_TUPLES"
+  #echo "CROSS_COMPILE: $CROSS_COMPILE"
+  #
+  #for element in "${COMPILER_TOOL_LIST[@]}"
+  #do
+  #  echo "element: ${element}"
+  #done
+  #
+  #echo "TRANSCRIPTION_FILE: $TRANSCRIPTION_FILE"
+}
+
+## -------------------------------------------------------------------------- ##
+## Set global DESTINATION="obj/linux-${git_branch}" variable
+## and build directories + info
+func_set_and_mk_DESTINATION(){ # git_repository="$1"
+  local git_repository git_branch file
+  git_repository="$1"
+
+  git_branch=$(cat ./"${git_repository}"/.git/HEAD)
+  git_branch="${git_branch//*\//}"
+
+  DESTINATION="${OUTPUT_DIR}/linux-${git_branch}"
+  [ -d "${DESTINATION}" ] || mkdir -pv "${DESTINATION}"
+  DESTINATION=$(realpath -e "${OUTPUT_DIR}"/linux-"${git_branch}")
+
+  file="${OUTPUT_DIR}/git-branch-${git_branch}"
+  [ -f "${file}" ] || echo "git_branch: ${git_branch}" > "${file}"
+}
+
+
+## ########################################################################## ##

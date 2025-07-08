@@ -1,0 +1,50 @@
+#!/bin/bash
+
+## ########################################################################## ##
+##
+## init
+##
+## ########################################################################## ##
+
+## includes
+source ../lib/func_script-handling
+
+## -------------------------------------------------------------------------- ##
+## DEFINITIONS:
+## -------------------------------------------------------------------------- ##
+CALLEE="false"
+
+## -------------------------------------------------------------------------- ##
+REMOTE_URL="https://github.com/sfjro/aufs-standalone.git"
+BUILD_DIR="../build-module-aufs"
+GIT_REPOSITORY_NAME="aufs-standalone.git"
+REPOSITORY_PATH=$(realpath "${BUILD_DIR}/${GIT_REPOSITORY_NAME}")
+## note: MAIN_BRANCH="master"
+
+## -------------------------------------------------------------------------- ##
+## link to kernel build repository
+KERNEL_BUILD_PATH="../build-kernel/linux.git"
+
+## -------------------------------------------------------------------------- ##
+## select default branch (aufs-standalone {patch} repository):
+## see 'git branch --all'
+## Note: - *-rcN branch is to be used with 'rc' kernel versions ONLY.
+##       - use the branch for the nearest lower number 
+BASE_KERNEL_VERSION="6.7"
+#BASE_KERNEL_VERSION="6.8"
+#BASE_KERNEL_VERSION="6.9"
+#BASE_KERNEL_VERSION="6.10"
+#BASE_KERNEL_VERSION="6.10.13"
+#BASE_KERNEL_VERSION="6.11"
+#BASE_KERNEL_VERSION="6.11.2"
+#BASE_KERNEL_VERSION="6.12"
+#BASE_KERNEL_VERSION="6.13"
+#BASE_KERNEL_VERSION="6.14"
+#BASE_KERNEL_VERSION="6.14.4"
+#BASE_KERNEL_VERSION="6.14.7"
+#BASE_KERNEL_VERSION="6.15"
+RELEASE_BRANCH="aufs${BASE_KERNEL_VERSION}"
+BASE_MODUL_VERSION="${BASE_KERNEL_VERSION//.*/}"
+
+## ########################################################################## ##
+
