@@ -1,3 +1,8 @@
+---
+defaults: github-markdown
+toc: false
+---
+<!-- *********************************************************************** -->
 # matrixxx-kernel-build
 - This repository is primarily a shell script collection to generate a special
   customized kernel for matrixxx (a D.I.Y linux live system)
@@ -10,13 +15,11 @@
   with the associated 'aufs-tools'
 - The results are x86 kernels in 32-bit and 64-bit versions
 
-## briefly about the matrixxx project:
-- see [readme: matrixxx.md](./doc/readme-matrixxx.md)
-
+#### briefly:
+- see [readme: about][]
 <!--
-## briefly about the kernel-build process and usage:
-- see [readme: kernel-build process](./doc/readme-process.md)
-- see [readme: usage](./doc/readme-usage.md)
+- see [readme: process][]
+- see [readme: usage][]
 -->
 
 #### links:
@@ -26,6 +29,10 @@
 <!-- *********************************************************************** -->
 [kernel]: https://kernel.org/
 [aufs]: https://aufs.sourceforge.net/
+
+[readme: about]: doc/readme-matrixxx.md
+[readme: process]: doc/readme-process.md
+[readme: usage]: doc/readme-usage.md
 
 ********************************************************************************
 ### Content of matrixxx-kernel-build.git:
