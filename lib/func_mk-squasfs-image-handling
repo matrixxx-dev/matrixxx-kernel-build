@@ -36,7 +36,7 @@
 ##     or
 ##     gensquashfs --comp-extra help
 ##
-## squashfs-tools-ng      ## New set of tools for working with SquashFS images
+## squashfs-tools-ng        New set of tools for working with SquashFS images
 ##
 ## ########################################################################## ##
 ## mksquashfs source1 source2 ...  <squashfs-file> [OPTIONS]
@@ -51,13 +51,12 @@
 ##  see Compressors available and compressor specific options (mksquashfs --help)
 ##
 ##  runtime options:
-##  -info                 print files written to filesystem
-##  -no-progress          do not display the progress bar
-##  -progress             display progress bar when using the -info option
+##  -info                   print files written to filesystem
+##  -no-progress            do not display the progress bar
+##  -progress               display progress bar when using the -info option
 ##
 ## --------------------------
-## squashfs-tools        ## Werkzeug zum Erzeugen und Hinzufügen von
-##                       ## squashfs-Dateisystemen
+## squashfs-tools           set of tools for working with SquashFS images
 ##
 ## ########################################################################## ##
 ##  compressor: <comp_name>
@@ -108,7 +107,7 @@ func_mk_squashfs_image() # input output
     [ "${comp_name}" = "xz" ] \
       && build_options="${build_options} --comp-extra level=6,x86"
     build_options="${build_options} -b 1024K"
-    cmd="sudo ${program} ${build_options} -D ${input} ${output}"
+    func_cmd "sudo ${program} ${build_options} -D ${input} ${output}"
   elif [ "${program}" = "mksquashfs" ]; then
     build_options="-comp ${comp_name}"
     ## https://fedoraproject.org/wiki/Changes/OptimizeSquashFS
@@ -117,19 +116,25 @@ func_mk_squashfs_image() # input output
     build_options="${build_options} -b 1024K"
     build_options="${build_options} -always-use-fragments"
     #build_options="${build_options} -info -progress"
-    cmd="sudo ${program} ${input} ${output} ${build_options}"
+    func_cmd "sudo ${program} ${input} ${output} ${build_options}"
   else
     echo "!!! ERROR: no program selected !!!"
   fi
-  
-  eval "${cmd}"
+
+  [ -f "${output}" ] && sudo chown --silent 1000:1000 "${output}"
 
   ## -----------------------
   ## time measurement: end
   end=$(date +%s)
   period=$((end - start))
   ## -----------------------
-  echo "Generate squashfs image - elapsed time: ${period} seconds"
+  func_echo "Generate squashfs image - elapsed time: ${period} seconds"
+}
+
+## wrapper functions:
+[ "${FUNC_SCRIPT_HANDLING}" = "true" ] || {
+  func_echo(){ echo "$1"; }
+  func_cmd(){ echo "$1"; eval "$1"; }
 }
 
 ## ########################################################################## ##
