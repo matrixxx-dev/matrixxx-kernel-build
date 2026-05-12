@@ -39,7 +39,6 @@ func_install_patches(){ # version="$1"; repository_path="$2"
       echo "${patch_file} file does not exist"
     fi
   done
-
 }
 
 ## -------------------------------------------------------------------------- ##

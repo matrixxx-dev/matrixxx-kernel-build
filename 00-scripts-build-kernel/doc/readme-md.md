@@ -27,7 +27,7 @@ im HowTo angegegeben kompilieren. Nicht zuordbarer Fehler beim Bauen.
 ********************************************************************************
 ### other docs:
 - man page: [make](./man-make.txt)
-- $make help # executed in repository
+- $ make help # executed in repository
   - [make help](./make-help.txt)
 
 ********************************************************************************

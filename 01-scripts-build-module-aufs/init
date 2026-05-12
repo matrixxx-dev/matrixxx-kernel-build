@@ -29,8 +29,8 @@ KERNEL_BUILD_PATH="../build-kernel/linux.git"
 ## select default branch (aufs-standalone {patch} repository):
 ## see 'git branch --all'
 ## Note: - *-rcN branch is to be used with 'rc' kernel versions ONLY.
-##       - use the branch for the nearest lower number 
-BASE_KERNEL_VERSION="6.7"
+##       - use the branch for the nearest lower number
+#BASE_KERNEL_VERSION="6.7"
 #BASE_KERNEL_VERSION="6.8"
 #BASE_KERNEL_VERSION="6.9"
 #BASE_KERNEL_VERSION="6.10"
@@ -43,6 +43,7 @@ BASE_KERNEL_VERSION="6.7"
 #BASE_KERNEL_VERSION="6.14.4"
 #BASE_KERNEL_VERSION="6.14.7"
 #BASE_KERNEL_VERSION="6.15"
+BASE_KERNEL_VERSION="7.0"
 RELEASE_BRANCH="aufs${BASE_KERNEL_VERSION}"
 BASE_MODUL_VERSION="${BASE_KERNEL_VERSION//.*/}"
 

@@ -25,9 +25,17 @@ SYSTEM_ARCHITECTURE=${SYSTEM_x86_64}
 
 ## -------------------------------------------------------------------------- ##
 ## select release tag:
-RELEASE_TAG="v6.7.5"
+##  example:
+##  retrieve all tags that match the specified pattern:
+##  - git tag -l "v6.7.*"
+##  - set the desired release tag
+##  create (if necessary) and switch to a new local branch based on tag:
+##  - will be done by func_git_switch_to_working_branch
+##    (called by 00-script-set-kernel-repository-default.sh)
+#RELEASE_TAG="v6.7.5"
 #RELEASE_TAG="v6.12.8"
 #RELEASE_TAG="v6.15.2"
+RELEASE_TAG="v7.0.6"        ## 2026.05.12 stable:   7.0.6
 
 ## -------------------------------------------------------------------------- ##
 LAYER_NO="0"

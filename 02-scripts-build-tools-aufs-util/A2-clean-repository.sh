@@ -20,9 +20,7 @@ func_change_to_dir "${BUILD_DIR}"
 
 ## set local git repository to default
 cd "${GIT_REPOSITORY_NAME}" || exit 1
-
 make clean
-
 
 ## -------------------------------------------------------------------------- ##
 ## pause:

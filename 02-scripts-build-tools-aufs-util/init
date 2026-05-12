@@ -22,15 +22,16 @@ GIT_REPOSITORY_NAME="aufs-util.git"
 
 ## -------------------------------------------------------------------------- ##
 ## link to kernel storage path
-## note: will be generated later in process 
+## note: will be generated later in process
 STORAGE_DIR=""
 
 ## -------------------------------------------------------------------------- ##
 ## select default branch (aufs-util repository):
 ## see 'git branch --all'
 ## Note: - *-rcN branch is to be used with 'rc' kernel versions ONLY.
-##       - use the branch for the nearest lower number 
-BASE_KERNEL_VERSION="6.0"
+##       - use the branch for the nearest lower number
+#BASE_KERNEL_VERSION="6.0"
+BASE_KERNEL_VERSION="7.0"
 RELEASE_BRANCH="aufs${BASE_KERNEL_VERSION}"
 
 ## ########################################################################## ##

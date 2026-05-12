@@ -23,18 +23,24 @@ CALLEE="$1"
 ## FUNCTIONS:
 ## -------------------------------------------------------------------------- ##
 ## Let’s go build kernel:
-func_build_process(){ # git_repository="$1"
+func_clean_process(){ # git_repository="$1"
   local git_repository clean_target
   git_repository="$1"
-
-  #clean_target="-j mrproper"
-  clean_target="-j distclean"
 
   ## --------------------------
   cd "${git_repository}" || exit 1
 
   ## clean the target
-  cmd="make ${clean_target}"; echo "${cmd}"
+  #clean_target="--trace -j distclean"
+  clean_target="-j distclean"
+  cmd="make ${clean_target}"; echo "CMD: ${cmd}"
+  eval "${cmd}"
+
+  ## git clean
+  ##      -f, --force
+  ##      -x                don’t use the standard ignore rules
+  ##      -d                also into untracked directories
+  cmd="git clean -fxd"; echo "CMD: ${cmd}"
   eval "${cmd}"
 
   cd "${SCRIPT_PATH}" || exit 1
@@ -48,7 +54,7 @@ func_build_process(){ # git_repository="$1"
 func_change_to_dir "${BUILD_DIR}"
 
 ## build the new kernel
-func_build_process "${GIT_REPOSITORY_NAME}"
+func_clean_process "${GIT_REPOSITORY_NAME}"
 
 
 ## -------------------------------------------------------------------------- ##

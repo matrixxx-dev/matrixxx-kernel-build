@@ -17,6 +17,7 @@ toc: false
 
 #### briefly:
 - see [readme: about][]
+
 <!--
 - see [readme: process][]
 - see [readme: usage][]
@@ -87,9 +88,9 @@ toc: false
 - **[dir]** doc
   - contains additional readme files
 - init
-- P0-script-change-compiler.sh
 - P0-script-check-compiler.sh
-- P1-script-cleaning-target.sh
+- P1-script-change-compiler.sh
+- P2-script-cleaning-target.sh
 - script-build-kernel.sh
 
 ********************************************************************************

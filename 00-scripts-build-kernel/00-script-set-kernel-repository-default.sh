@@ -20,8 +20,8 @@ func_change_to_dir "${BUILD_DIR}"
 
 ## set local git repository to default
 cd "${GIT_REPOSITORY_NAME}" || exit 1
+echo "Start fetch..."
 func_git_fetch
-#func_git_switch_to_branch "${RELEASE_BRANCH}"
 func_git_switch_to_working_branch "${RELEASE_TAG}"
 
 ## -------------------------------------------------------------------------- ##

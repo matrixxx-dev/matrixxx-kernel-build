@@ -69,7 +69,8 @@ main_start=$(date +%s)
 ## change to build directory
 func_change_to_dir "${BUILD_DIR}"
 
-## select the system architecture (./init) and set the corresponding values
+## select the system architecture (./config_init)
+## and set the corresponding values
 func_set_system_architecture
 
 ## build the new kernel
