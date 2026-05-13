@@ -21,19 +21,20 @@ toc: false
 - **manually:** adapt the config_init file with the desired 'RELEASE_TAG'
   - note: retrieve all tags that match the specified kernel release pattern to
     find the desired release tag
-    - `git tag -l "v6.7.*"'`
+    - for example `git tag -l "v6.7.*"'`
 - **execute:** 00-script-kernel-repository-set-local-branch.sh
   - create (if necessary) and then switch to a new local branch which name
     based on the selected kernel release tag
 - **manually:** process [01-scripts-build-module-aufs](#build-module-aufs)
   - this patch the kernel repository with the aufs module
-- **manually:** `git add .` and `git commit -m "include aufs patch"`
+- **manually:** `git add .` and `git commit -m "include aufs patch"` of the
+  local kernel repository branch
 - **execute:** 01-script-build-kernel--create_kernel_config_file.sh
   - generates a suitable config file from an existing one
 - **execute:** 02-script-build-kernel--transcription.sh
   - generates the actual kernel build (transcription with the `script`
     command)
-  - after this you will find the result files direct in the `build-kernel'
+  - after this you will find the result files directly in the `build-kernel'
     directory
 - **execute:** 10-script-save-results.sh
   - copy all result files in corresponding kernel and architecture specific
@@ -78,5 +79,7 @@ linux-libc-dev_*.deb
 - **execute:** A1-build-aufs-util.sh
   - generate the aufs-utils files
   - install the files in a corresponding data directory
+- **manually:** copy the resulting directory into the data directory of
+  kernel build
 - **execute:** A2-clean-repository.sh
   - erase all result files from repository
