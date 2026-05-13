@@ -143,7 +143,6 @@ func_mk_squashfs_image() # input="$1"; output="$2";
 }
 
 ## wrapper functions:
-[ "${FUNC_SCRIPT_HANDLING}" = "true" ] ||
 [ "${FUNC_SCRIPT_LOGGING_HANDLING}" = "true" ] ||
 {
   func_echo(){ echo "$1"; }

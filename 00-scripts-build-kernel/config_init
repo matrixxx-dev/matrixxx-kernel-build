@@ -20,8 +20,8 @@ SYSTEM_i686=$((0x01))
 SYSTEM_x86_64=$((0x02))
 # ------------------
 ## system architecture selection:
-SYSTEM_ARCHITECTURE=${SYSTEM_x86_64}
-#SYSTEM_ARCHITECTURE=${SYSTEM_i686}
+#SYSTEM_ARCHITECTURE=${SYSTEM_x86_64}
+SYSTEM_ARCHITECTURE=${SYSTEM_i686}
 
 ## -------------------------------------------------------------------------- ##
 ## select release tag:
@@ -29,7 +29,7 @@ SYSTEM_ARCHITECTURE=${SYSTEM_x86_64}
 ##  retrieve all tags that match the specified pattern:
 ##  - git tag -l "v6.7.*"
 ##  - set the desired release tag
-##  create (if necessary) and switch to a new local branch based on tag:
+##  create (if necessary) and then switch to a new local branch based on tag:
 ##  - will be done by func_git_switch_to_working_branch
 ##    (called by 00-script-set-kernel-repository-default.sh)
 #RELEASE_TAG="v6.7.5"

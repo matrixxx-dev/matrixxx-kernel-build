@@ -27,9 +27,12 @@ func_build_aufs_util(){ # linuxsrc="$1"
   CC="${TARGET_TUPLES}-gcc"
   export CPPFLAGS HOSTCC CC
 
+  echo "*** make all"
   make all
+  echo "*** make install"
   [ -d "../${data_dir}" ] || mkdir -p "../${data_dir}"
   sudo make DESTDIR="../${data_dir}" install
+
   func_UsrMerge "../${data_dir}"
   if [ -n "${M_TYPE}" ]; then
     sudo mv -f "./${data_dir}/usr/lib" "./${data_dir}/usr/lib64"

@@ -40,8 +40,8 @@ func_clean_process(){ # git_repository="$1"
   ##      -f, --force
   ##      -x                don’t use the standard ignore rules
   ##      -d                also into untracked directories
-  cmd="git clean -fxd"; echo "CMD: ${cmd}"
-  eval "${cmd}"
+  #cmd="git clean -fxd"; echo "CMD: ${cmd}"
+  #eval "${cmd}"
 
   cd "${SCRIPT_PATH}" || exit 1
   ## --------------------------
