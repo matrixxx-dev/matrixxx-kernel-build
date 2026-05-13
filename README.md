@@ -24,6 +24,9 @@ toc: false
 - home page of [kernel.org][kernel]
 - home page of [aufs][]
 
+#### license:
+- *GNU GENERAL PUBLIC LICENSE* [[text]](LICENSE)
+
 <!-- *********************************************************************** -->
 [readme: about]: doc/readme-matrixxx.md
 [readme: content]: doc/readme-content.md

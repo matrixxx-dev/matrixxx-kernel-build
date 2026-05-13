@@ -19,7 +19,7 @@ toc: false
 - **[dir]** lib
   - contains some libraries of common script functions
 - LICENSE
-  - *GNU GENERAL PUBLIC LICENSE* [[text]](LICENSE)
+  - *GNU GENERAL PUBLIC LICENSE* [[text]](../LICENSE)
 - README.md
   - *briefly description about the matrixxx-kernel-build.git* (this file)
 
