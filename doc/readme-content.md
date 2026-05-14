@@ -21,7 +21,7 @@ toc: false
 - LICENSE
   - *GNU GENERAL PUBLIC LICENSE* [[text]](../LICENSE)
 - README.md
-  - *briefly description about the matrixxx-kernel-build.git* (this file)
+  - *briefly description about the matrixxx-kernel-build.git*
 
 ********************************************************************************
 #### Content of '00-scripts-build-kernel': <a name="build-kernel"/>
