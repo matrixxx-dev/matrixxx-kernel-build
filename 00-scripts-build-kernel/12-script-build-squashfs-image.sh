@@ -8,7 +8,7 @@
 ## includes:
 . ./init
 . ../lib/func_kernel-build-handling
-. ../lib/func_mk-squasfs-image-handling
+. ../lib/func_mk-squashfs-image-handling
 
 ## defines:
 CALLEE="$1"
