@@ -15,6 +15,10 @@ toc: false
   with the associated 'aufs-tools'
 - The results are x86 kernels in 32-bit and 64-bit versions
 
+> [!NOTE]
+> to get information about the available Debian kernels use
+> `sudo apt-get update` and subsequently `apt list linux-image-*`
+
 #### briefly:
 - see [readme: about][]
 - see [readme: content][]
