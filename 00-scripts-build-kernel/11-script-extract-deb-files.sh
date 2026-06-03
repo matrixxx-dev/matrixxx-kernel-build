@@ -39,20 +39,12 @@ func_dpkg_extract_to_data() # dir_name="$1"
     [ -d "${output}" ] && sudo rm -rf "${output}"
     [ -d "${output}" ] || sudo mkdir -p "${output}"/"${info}"
     sudo sh -c "echo 'CONTENT:' > ${info_file}"
-
     for file in ${file_list}; do
       echo "Extracted file: ${file}"
       sudo sh -c "echo ' '${file} >> ${info_file}"
       sudo dpkg -x ./"${file}" "${output}"
     done
-
     func_UsrMerge "${output}"
-
-    sudo sh -c "echo 'DIRECTORIES:' >> ${info_file}"
-    file_list="$(ls "${output}")"
-    for file in ${file_list}; do
-      sudo sh -c "echo ' '${file} >> ${info_file}"
-    done
   fi
 }
 

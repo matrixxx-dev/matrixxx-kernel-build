@@ -18,7 +18,8 @@ toc: false
 - **execute:** 00-script-kernel-repository-fetch.sh
   - performs a fetch on the kernel repository so that the latest
     data is available
-- **manually:** adapt the config_init file with the desired 'RELEASE_TAG'
+- **manually:** adapt the `config_init` file with the desired `RELEASE_TAG` 
+    and check `SYSTEM_ARCHITECTURE`
   - note: retrieve all tags that match the specified kernel release pattern to
     find the desired release tag
     - for example `git tag -l "v6.7.*"'`
